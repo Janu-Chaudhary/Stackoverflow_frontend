@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag Trends Dashboard</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="light-mode">
+    <!-- Three.js Background Canvas -->
+    <canvas id="particles-bg"></canvas>
+
+    <!-- Page Indicators -->
+    <div class="page-indicators">
+      <div class="page-indicator active" data-section="intro"></div>
+      <div class="page-indicator" data-section="yearly"></div>
+      <div class="page-indicator" data-section="monthly"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="glass">
+      <h1>Tag Trends</h1>
+      <nav>
+        <ul>
+          <li><a href="#intro">Home</a></li>
+          <li><a href="#yearly">Yearly Trends</a></li>
+          <li><a href="#monthly">Monthly Analysis</a></li>
+        </ul>
+      </nav>
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+        </label>
+        <span class="fas fa-moon"></span>
+      </div>
+    </header>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section">
+      <h2 class="section-title">
+        Discover <span class="gradient-text">Tag Trends</span> Over Time
+      </h2>
+      <div class="section-content">
+        <p class="intro-text">
+          Explore how programming language popularity has evolved over years.
+          This interactive dashboard visualizes tag usage data from stackoverflow, helping you identify trends and make informed
+          decisions.
+        </p>
+
+        <div class="stats-container">
+          <div class="stat-card glass">
+            <i class="fas fa-code stat-icon"></i>
+            <div class="stat-number" id="totalTags">45k+</div>
+            <div class="stat-title">Unique tags tracked</div>
+            <div class="stat-description">
+              Unique question tags monitored across stackoverflow
+            </div>
+          </div>
+
+          <div class="stat-card glass">
+            <i class="fas fa-calendar-alt stat-icon"></i>
+            <div class="stat-number" id="yearsRange">3</div>
+            <div class="stat-title">Years of Data</div>
+            <div class="stat-description">
+              Historical data from 2023 to 2025
+            </div>
+          </div>
+
+          <div class="stat-card glass">
+            <i class="fas fa-chart-line stat-icon"></i>
+            <div class="stat-number" id="dataPoints">27K+</div>
+            <div class="stat-title">Pages scrapped</div>
+            <div class="stat-description">
+              Comprehensive dataset for accurate analysis
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Yearly Trends Section -->
+    <section id="yearly">
+      <h2 class="section-title">
+        Yearly <span class="gradient-text">Tag Trends</span>
+      </h2>
+      <div class="section-content">
+        <div class="chart-card glass yearly-section">
+          <div class="card-header">
+            <h2>Programming Language Popularity Over last 3 Years</h2>
+            <div class="chart-controls">
+              <button class="btn" id="normalizeToggle">
+                Toggle Normalized View
+              </button>
+              <button class="btn active">Top 12 Tags</button>
+              <button class="btn">Last updated on April 2025</button>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="yearlyChart"></canvas>
+            <div class="loader"></div>
+          </div>
+          <div class="chart-legend" id="yearlyLegend"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Monthly Analysis Section -->
+    <section id="monthly">
+      <h2 class="section-title">
+        Monthly <span class="gradient-text">Tag Analysis</span>
+      </h2>
+      <div class="section-content">
+        <div class="dashboard-container">
+          <div class="chart-card glass">
+            <div class="card-header">
+              <h2>Monthly Tag Usage</h2>
+              <div class="filter-controls">
+                <div class="select-wrapper">
+                  <label for="langSelect">Language:</label>
+                  <select id="langSelect" class="styled-select">
+                    <!-- Populated by JavaScript -->
+                  </select>
+                  <span class="select-arrow fas fa-chevron-down"></span>
+                </div>
+                <div class="select-wrapper">
+                  <label for="yearSelect">Year:</label>
+                  <select id="yearSelect" class="styled-select">
+                    <!-- Populated by JavaScript -->
+                  </select>
+                  <span class="select-arrow fas fa-chevron-down"></span>
+                </div>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="monthlyChart"></canvas>
+              <div class="loader"></div>
+            </div>
+          </div>
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="glass">
+      <div>© 2025 Tag Trends Dashboard | All rights reserved</div>
+      <div class="social-links">
+        <a href="#" class="social-link twitter"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a href="#" class="social-link github"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link linkedin"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+      </div>
+    
+    </footer>
+
+    <!-- Tooltip element -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="./script.js"></script>
+
+    
+  </body>
+</html>
